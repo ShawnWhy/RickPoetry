@@ -1,0 +1,14 @@
+{
+    "collection":[
+
+        {"word":"the",
+        "color":"blue"},
+
+        {"word":"it",
+        "color":"red"},
+        {"word":"this",
+        "color":"blue"},
+        {"word":"for",
+        "color":"blue"},
+    ]
+}
