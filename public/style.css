@@ -3,6 +3,9 @@
   margin:auto;
   width:100%;
 }
+body{
+  overflow: hidden;
+}
 p{
   display: inline;
 }
@@ -85,4 +88,37 @@ p{
   color:black;
   border-radius:2px;
 
+}
+
+.raindrop{
+  height:40px;
+  width:40px;
+  border-radius:10px;
+  animation:raindrop 5s both;
+  position:absolute;
+  z-index:3;
+}
+.follower1{
+height:40px;
+width:40px;
+border-radius:10px;
+position:absolute;
+z-index:2;
+}
+.follower{
+  height:95%;
+  width:95%;
+  border-radius:25%;
+  left:2.5%;
+  top:2.5%;
+  position:absolute;
+
+}
+
+@keyframes raindrop {
+  0%{top:-10%; display:block}
+  90%{top:110%; height:20px;width:20px}
+  100%{top:110%; height:0px;width:0px;}
+
+  
 }
