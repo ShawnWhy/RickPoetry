@@ -12,9 +12,13 @@
   <link href="style.css" rel="stylesheet">
 </head>
 <body>
-<div style="height:100%; width:40%; overflow: hidden;background-color: rgb(26, 101, 104); position:absolute;z-index: 2;">
-
+<div class= "controlpanel" style="height:100%; width:40%; overflow: hidden;background-color: rgb(26, 101, 104); position:absolute;z-index: 2;">
+<div class="printout">
+  <div class="slit"></div>
+  <div class="paper invisibleP"></div>
 </div>
+</div>
+
 <canvas id="canvas" ></canvas>
 
   
@@ -25,7 +29,11 @@
  <h1 >LOADING</h1>
  <div class="loadingbar"></div>
  </div>
+<div class="toolbar">
+  <div class="button erase">erase</div>
+  <div class="button download"><a>download</a></div>
 
+</div>
 
 </body>
 
@@ -42,3 +50,4 @@
 </body>
 
 </html>
+href={"data:text/plain;charset=utf-8, "+ JSON.stringify(allsentences,null,1)} download="poem.txt">download poem</a></button>

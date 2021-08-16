@@ -1,22 +1,116 @@
-var sentence=[];
+var backgroundColor;
+var sentence=[''];
 var firstfollower = "on";
 var secondfollower="on";
+var feed = "off"; 
+var formerx;
+var formery;
+var throttle="on"
 var rain = function(){
-    length=words.length
+    let length=wordswithcolor.length
     setInterval(() => {
         randnumber = Math.floor(Math.random()*(length-1))
         randleft = Math.random()*40+60
          var raindrop = $("<div>");
          raindrop.addClass("raindrop")
          raindrop.css("left",randleft+"%")
-         raindrop.css("background-color",wordswithcolor[randnumber].color);
-         raindrop.attr("word",words[randnumber])
+         raindrop.css("background-color",wordswithcolor[randnumber]["color"]);
+         raindrop.attr("word",wordswithcolor[randnumber]["word"])
          $("body").append(raindrop)
     
 
         
     }, 500);
 }
+
+
+
+var sentences = "Listen, Morty, I hate to break it to you, but what people call “love” is just a chemical reaction that compels animals to breed. It hits hard, Morty, then it slowly fades, leaving you stranded in a failing marriage. I did it. Your parents are gonna do it. Break the cycle, Morty. Rise above. Focus on science "
+sentences+= "Wubba lubba dub dub "
+sentences+= "You gotta get Schwifty "
+sentences+="We’ve got a lot of friends and family to exterminate "
+sentences+="I’ll tell you how I feel about school, Jerry, it’s a waste of time. Bunch of people running around bumping into each other got a guy up front says, ‘2 + 2,’ and the people in the back say, ‘4.’ Then the bell rings and they give you a carton of milk and a piece of paper that says you can go take a dump or something. I mean, it’s not a place for smart people, Jerry. I know that’s not a popular opinion, but that’s my two cents on the issue.” – What do they actually teach you in school that you end up using in life? Absolutely nothing "
+sentences+="Weddings are basically funerals with cake ";
+sentences+="What, so everyone’s supposed to sleep every single night now? You realize that nighttime makes up half of all time "
+sentences+="Don’t get drawn into the culture, Morty. Stealing stuff is about the stuff, not the stealing "
+sentences+="He’s not pressing charges… That’s gotta be the “you shot me” equivalent of not being mad "
+
+var words = sentences.split(/[!,?,., ]/);
+words=words.filter(word=>word!="");
+
+var wordswithcolor = words.map(function(word) {
+    let red = Math.random()*225;
+    let green = Math.random()*225;
+    let blue = Math.random()*225;
+    let color = "rgb("+red+","+green+","+ blue+")"
+    return {"word": " "+word+" ", "color":color
+}
+    });
+
+if(wordswithcolor.length>10){
+    rain()
+
+    $("body").mousemove(event=>{
+        if (feed="off"){
+        if(throttle="on"){
+            throttle="off";
+        event.stopPropagation();
+        event.preventDefault();
+        
+        var followerone = $(".follower1");
+        var followerArray=$('.follower');
+        if(followerone
+            &&followerArray
+            ){
+        var length=followerArray.length;
+    
+        $(followerone).css("top", (event.pageY + 20) + "px");
+        $(followerone).css("left", (event.pageX + 20) + "px")
+        for(let i=0;i<length;i++){
+            // setTimeout(() => {
+            if(formerx>(event.pageX+20)){
+                //  $(followerArray[i]).css("top","20%")
+                 $(followerArray[i]).css("left", "7.5%")}
+            else if(formerx<(event.pageX-20)){
+                $(followerArray[i]).css("left", "-7.5%")}
+
+            setTimeout(() => {
+                //  $(followerArray[i]).css("top","2.5%")
+                 $(followerArray[i]).css("left", "2.5%")
+                 formerx=event.pageX;  
+            },i*20);
+        // },i*20);
+        // setTimeout(() => {
+            if(formery>(event.pageY+20)){
+                //  $(followerArray[i]).css("top","20%")
+                 $(followerArray[i]).css("top", "5%")}
+            else if(formery<(event.pageY-20)){
+                $(followerArray[i]).css("top", "-7.5%")}
+
+            setTimeout(() => {
+                //  $(followerArray[i]).css("top","2.5%")
+                 $(followerArray[i]).css("top", "2.5%")
+                 formery=event.pageY;  
+            // },i*20);
+        },i*20);
+        } 
+    }
+    setTimeout(() => {
+        throttle="on"
+        
+    }, 1000);
+
+}
+        }
+
+    })
+    
+    
+}
+
+
+
+
 
 $(document).on("mouseover",".raindrop",event=>{
     // event.stopPropagation();
@@ -65,33 +159,10 @@ setInterval(() => {
     };
     
 }, 100);
-var backgroundColor;
 
-var sentences = "Listen, Morty, I hate to break it to you, but what people call “love” is just a chemical reaction that compels animals to breed. It hits hard, Morty, then it slowly fades, leaving you stranded in a failing marriage. I did it. Your parents are gonna do it. Break the cycle, Morty. Rise above. Focus on science "
-sentences+= "Wubba lubba dub dub "
-sentences+= "You gotta get Schwifty "
-sentences+="We’ve got a lot of friends and family to exterminate "
-sentences+="I’ll tell you how I feel about school, Jerry, it’s a waste of time. Bunch of people running around bumping into each other got a guy up front says, ‘2 + 2,’ and the people in the back say, ‘4.’ Then the bell rings and they give you a carton of milk and a piece of paper that says you can go take a dump or something. I mean, it’s not a place for smart people, Jerry. I know that’s not a popular opinion, but that’s my two cents on the issue.” – What do they actually teach you in school that you end up using in life? Absolutely nothing "
-sentences+="Weddings are basically funerals with cake ";
-sentences+="What, so everyone’s supposed to sleep every single night now? You realize that nighttime makes up half of all time "
-sentences+="Don’t get drawn into the culture, Morty. Stealing stuff is about the stuff, not the stealing "
-sentences+="He’s not pressing charges… That’s gotta be the “you shot me” equivalent of not being mad "
+// $(".erase")
 
-var words = sentences.split(/[!,?,., ]/);
-words=words.filter(word=>word!="");
 
-var wordswithcolor = words.map(function(word) {
-    let red = Math.random()*225;
-    let green = Math.random()*225;
-    let blue = Math.random()*225;
-    let color = "rgb("+red+","+green+","+ blue+")"
-    return {"word": " "+word+" ", "color":color
-}
-    });
-
-if(wordswithcolor.length>1){
-    rain()
-}
 
 
 window.addEventListener("DOMContentLoaded",function(){
@@ -205,14 +276,57 @@ window.addEventListener("DOMContentLoaded",function(){
                     parameter:""
                     },
                     function(){
-                             scene.animationGroups.forEach(animation=>{
+                        feed="on";
+                        scene.animationGroups.forEach(animation=>{
                         animation.play(false);
                     })
-                      
+                    
+                    $(".follower1").css("transform","translate(-20px, -20px)")
+                    
+                    setTimeout(() => {
+                        $(".follower1").remove() 
+                        feed="off"; 
+                        firstfollower="on"
+                        secondfollower="on" 
+                    }, 1000);
+                    setTimeout(() => {
+                        $(".paper").removeClass("invisibleP")
+                        $(".paper").text(sentence.join(''))
                         
+                    }, 4000);                       
                     }
 
                 ))
+
+                $(".erase").click(e=>{
+                    e.stopPropagation;
+                    e.preventDefault;
+                    $(".paper").addClass("trashpaper")
+                    $(".erase").addClass("dropbutton")
+                    sentence=[''];
+                    setTimeout(() => {
+                        $('.paper').addClass("invisibleP");   
+                        $('.paper').removeClass("trashpaper"); 
+                        $(".erase").removeClass("dropbutton")
+  
+
+                    }, 3000);
+                    
+                })
+
+                $(".download").click(e=>{
+                    $(".download a").attr("href", 'data:text/plain;charset=utf-8, ' + sentence.join(''),null)
+                    $('.download a').attr("download","poem.txt");
+                    $(".download").addClass("dropbutton");
+                    e.stopPropagation;
+                    e.preventDefault;
+                    $(".paper").addClass("trashpaper")
+                    setTimeout(() => {
+                        $('.paper').removeClass("trashpaper");   
+                        $(".download").removeClass("dropbutton");
+                 }, 3000);
+               
+                })
 
             // if (scene.animationGroups.length > 0) {
             //     scene.animationGroups.forEach(animation => {

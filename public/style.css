@@ -19,6 +19,7 @@ p{
   bottom:30px;
   padding:5px;
   text-align:center;
+  z-index:4;
   }
 
 .controller h1{
@@ -41,40 +42,9 @@ p{
   
 }
 
-.controller{
-
-  width:20%;;
-  display:block;
-  position:absolute;
-  top:5%;
-  right:5%;
-  /* text-align: center; */
-  align-content: center;
-  z-index:2;
-  padding:1%;
-  color:white;
-  border:white 1px solid;
-  border-radius:2px;
-}
-
-.button{
-  border-radius: 3px;
-  background-color: white;
-  margin:auto;
-  text-align:center;
-  margin-top:4%;
-  padding:1%;
-
-}
-
-.subButton{
-  animation:drop .5s both;
-  margin-top:5%;
-}
-
-@keyframes drop {
-0%{transform:translateY(-100%)}
-0%{transform:translateY(10)}
+@keyframes dropbutton {
+0%{transform:translateY(50%)}
+100%{transform:translateY(0%)}
 }
   
 
@@ -103,7 +73,7 @@ height:40px;
 width:40px;
 border-radius:10px;
 position:absolute;
-z-index:2;
+z-index:4;
 }
 .follower{
   height:95%;
@@ -112,6 +82,7 @@ z-index:2;
   left:2.5%;
   top:2.5%;
   position:absolute;
+  z-index:4;
 
 }
 
@@ -121,4 +92,95 @@ z-index:2;
   100%{top:110%; height:0px;width:0px;}
 
   
+}
+
+.controlpanel{
+  text-align: center;
+
+}
+.printout{
+  height:80%;
+  width:80%;
+  background-color: rgb(21, 85, 104);
+  margin:auto;
+  overflow: hidden;
+  position:relative;
+  top:10%;
+}
+
+.slit{
+  height:10px;
+  border-radius: 5px;
+  width:100%;
+  background-color: black;
+  position: absolute;
+  z-index: 1;
+}
+
+.paper{
+  height:100%;
+  width:100%;
+  position:absolute;
+  animation:printout 3s both;
+  z-index:0;
+  background-color: blanchedalmond;
+  padding:20%;
+  text-align: center;
+  color:rgb(8, 8, 17);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: x-large;
+  
+}
+
+@keyframes printout {
+  0%{
+    top:-100%
+      }
+  100%{
+    top:0%;
+
+  }
+  
+}
+@keyframes drop {
+  0%{
+    top:0%;
+  }
+  100%{
+    top:100%
+  }
+  
+}
+
+.trashpaper{
+  animation: drop 3s both;
+}
+.dropbutton{
+  animation: dropbutton .5s both;
+}
+
+
+.toolbar{
+  height:10%;
+  width:100%;
+  background-color:rgb(26, 101, 104);
+  display: block;
+  position: absolute;
+  bottom:0%;
+  z-index: 3;
+}
+
+.button{
+  height:50%;
+  width:20%;
+  border-radius: 10px;
+  background-color: coral;
+  margin-right:10px;
+  margin-top:5px;
+  float:right;
+  text-align:center;
+  font-size: x-large;
+  font-weight: bold;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
 }
